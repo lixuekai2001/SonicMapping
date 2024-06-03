@@ -1,0 +1,53 @@
+import numpy as np
+import plotly.graph_objects as go
+from scipy.interpolate import interp2d
+
+# Define the dimensions of the cube with a moderately rough surface
+grid = 4
+mag_times = 4
+
+# Generate a moderate roughness pattern
+d = np.linspace(0, 1, grid)
+X, Y = np.meshgrid(d, d)
+Z = 0.01 * np.random.randn(grid, grid)
+
+# Interpolate to create a denser grid
+interp_func = interp2d(d, d, Z, kind='cubic')
+d_dense = np.linspace(0, 1, mag_times * grid)
+X_dense, Y_dense = np.meshgrid(d_dense, d_dense)
+Z_dense = interp_func(d_dense, d_dense)
+
+def plot_moderate_rough_face(fig, X, Y, Z, offset, axis):
+    if axis == 'z':
+        Z += offset
+        surface = go.Surface(x=X, y=Y, z=Z, surfacecolor=Z-offset, colorscale='Viridis', showscale=False)
+    elif axis == 'y':
+        Y, Z = Z + offset, Y
+        surface = go.Surface(x=X, y=Y, z=Z, surfacecolor=Y-offset, colorscale='Viridis', showscale=False)
+    elif axis == 'x':
+        X, Z = Z + offset, X
+        surface = go.Surface(x=X, y=Y, z=Z, surfacecolor=X-offset, colorscale='Viridis', showscale=False)
+    
+    fig.add_trace(surface)
+
+fig = go.Figure()
+
+# Plot each face of the cube with moderate rough surface
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, 0, 'z')  # Bottom face
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, 1, 'z')  # Top face
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, 0, 'y')  # Front face
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, -1, 'y')  # Back face
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, 0, 'x')  # Left face
+plot_moderate_rough_face(fig, X_dense, Y_dense, Z_dense, -1, 'x')  # Right face
+
+fig.update_layout(
+    scene=dict(
+        xaxis=dict(title='X', nticks=0),
+        yaxis=dict(title='Y', nticks=0),
+        zaxis=dict(title='Z', nticks=0),
+        camera=dict(eye=dict(x=1.25, y=1.25, z=1.25))
+    ),
+    coloraxis=dict(colorbar=dict(title="Normalized Young's Modulus"))
+)
+
+fig.show()
