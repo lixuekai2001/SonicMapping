@@ -48,17 +48,14 @@ The primary objective of this project is to implement and validate a sonic mappi
 ## Repository Structure
 
 ```
-├── data/
-│   ├── raw/                # Raw measurement data and CT images
-│   └── processed/          # Processed data used for mapping
-├── src/
-│   ├── sonic_mapping.py    # Core algorithms for 2D and 3D mapping
-│   ├── interpolation.py    # Interpolation routines for refining maps
-│   └── validation.py       # Tools for comparing sonic maps with CT scans
+├── data/                  # Raw measurement data                 
+│   
+├── coalpro/
+│   ├── utils.py            # Core algorithms for 2D and 3D mapping
+│   │                        # Interpolation routines for refining maps
+│   └── visualize.py        # Tools for visualizing the results
 ├── notebooks/
-│   └── exploration.ipynb   # Jupyter notebooks for data exploration and visualization
-├── tests/
-│   └── test_mapping.py     # Unit tests for mapping functions
+│   └── coal_3D_rev3.ipynb   # Jupyter notebooks for mapping computing and visualization
 ├── README.md               # This file
 └── LICENSE                 # Licensing information
 ```
@@ -99,12 +96,6 @@ The primary objective of this project is to implement and validate a sonic mappi
 ### Running the Mapping Algorithm
 
 To generate the 2D and 3D sonic maps, run the main script:
-```bash
-python src/sonic_mapping.py --input data/raw/sample_data.csv --output data/processed/sonic_map.png
-```
-*Adjust the input and output paths as needed.*
-
-### Visualizing Results
 
 Jupyter notebooks are provided for exploring the sonic mapping process and comparing the results with CT scan images:
 ```bash
