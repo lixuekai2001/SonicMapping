@@ -86,10 +86,6 @@ The primary objective of this project is to implement and validate a sonic mappi
    source env/bin/activate  # On Windows use: env\Scripts\activate
    ```
 
-3. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 ## Usage
 
