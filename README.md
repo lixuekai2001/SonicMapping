@@ -1,5 +1,5 @@
 
-# 3D Sonic Mapping for Coal Samples
+# 3D Sonic Mapping Python Program
 
 This repository contains code and data for a novel sonic mapping method applied to coal samples. The method utilizes non-destructive sonic tests and CT scan imaging for validation, enabling detailed visualization of the internal structure of coal samples.
 
