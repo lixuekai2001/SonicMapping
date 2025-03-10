@@ -9,7 +9,6 @@ This study presents a novel sonic mapping method applied to coal samples, verifi
 
 <img src="Fig4.svg" alt="Sonic mapping (2D)" width="50%">
 <img src="fig6.svg" alt="Sonic mapping (3D)" width="50%">
-<img src="Fig6.svg" alt="Sonic mapping vs CT digtial model" width="50%">
 
 
 
