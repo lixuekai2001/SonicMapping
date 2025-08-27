@@ -1,5 +1,5 @@
 
-# 3D Sonic Geo-Sensing Python Program
+# 3D Sonic Mapping Python Program
 
 This repository contains code and data for a novel sonic geo-sensing method applied to coal samples. The method utilizes non-destructive sonic tests and CT scan imaging for validation, enabling detailed visualization of the internal structure of coal samples.
 
